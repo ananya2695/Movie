@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ReservePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="brown">
+        <ion-title>{{info?.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider color="light">User</ion-item-divider>
+        <ion-item>
+            <ion-label fixed>Firstname</ion-label>
+            <ion-input type="text" [(ngModel)]="firstname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Lastname</ion-label>
+            <ion-input type="text" [(ngModel)]="lastname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Telephone</ion-label>
+            <ion-input type="tel" [(ngModel)]="telephone"></ion-input>
+        </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+        <ion-item-divider color="light">information</ion-item-divider>
+        <ion-item>
+            <ion-icon ios="ios-clock-outline" md="md-clock" class="clock"></ion-icon>{{info.date}} {{info.time.time}} &nbsp; Theater: {{info.time.theater}}</ion-item>
+    </ion-item-group>
+    <ion-item-group>
+        <ion-item-divider color="light">Seat</ion-item-divider>
+        <ion-row>
+            <ion-col col-6 *ngFor="let item of info.time.seat ; let i = index">
+                <button ion-button full *ngIf="item.type ==='Premuim'" [disabled]="item.book" color="yellow" (click)="selectSeat(i)">{{item.number}} <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark" class="checkmark" *ngIf="item.check"></ion-icon></button>
+                <button ion-button full *ngIf="item.type === 'Normal'" [disabled]="item.book" color="red" (click)="selectSeat(i)">{{item.number}} <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark" class="checkmark" *ngIf="item.check"></ion-icon></button>
+            </ion-col>
+        </ion-row>
+    </ion-item-group>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <!-- <ion-title>{{calculate()}}</ion-title> -->
+        <button ion-button block class="btnblock" (click)="gotoInfo()" [disabled]="validateData()">{{calculate()}} (THB) Book Now</button>
+    </ion-toolbar>
+</ion-footer>

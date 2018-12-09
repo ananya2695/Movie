@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="brown">
+        <ion-title>
+            {{result.movie.name}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager>
+
+        <ion-slide>
+            <img src="{{result.movie.image}}">
+        </ion-slide>
+
+    </ion-slides>
+
+    <ion-list>
+        <ion-item>
+            <ion-icon name="contact" item-start color="brown"></ion-icon>
+            User : {{result.firstname + ' ' + result.lastname + ' Tel : ' +result.telephone}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="book" item-start color="brown"></ion-icon>
+            Seat : <span *ngFor="let item of result.movie.seat">   {{item.number}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="desktop" item-start color="brown"></ion-icon>
+            <span> Theater : {{result.movie.theater}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="time" item-start color="brown"></ion-icon>
+            <span> Showtime : {{result.movie.date+ ' ' + result.movie.time}}</span>
+        </ion-item>
+    </ion-list>
+    <ion-card text-center>
+        <ion-card-content>
+            <h1>Code : {{result.code}}</h1>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

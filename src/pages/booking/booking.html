@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar color="brown">
+        <ion-title>
+            {{showtime?.name}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group *ngFor="let item of showtime?.show_time">
+        <ion-item-divider color="light">วันที่ : {{item.date}}</ion-item-divider>
+        <ion-item *ngFor="let itm of item.time" (click)="gotoReserve(item.date,itm)">
+            <ion-icon ios="ios-clock-outline" md="md-clock" class="clock"></ion-icon>{{itm.time}}</ion-item>
+    </ion-item-group>
+</ion-content>
